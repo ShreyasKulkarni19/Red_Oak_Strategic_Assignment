@@ -12,11 +12,11 @@ class Config:
     """Configuration class for ETL pipeline settings."""
 
     # AWS Configuration
-    aws_region: str
-    source_bucket: str
-    source_key: str
-    destination_bucket: str
-    destination_key: str
+    aws_region: Optional[str]
+    source_bucket: Optional[str]
+    source_key: Optional[str]
+    destination_bucket: Optional[str]
+    destination_key: Optional[str]
 
     # AWS Credentials (optional, can use IAM roles)
     aws_access_key_id: Optional[str] = None
@@ -51,11 +51,11 @@ class Config:
             )
 
         return cls(
-            aws_region=os.getenv("AWS_REGION", ""),
-            source_bucket=os.getenv("SOURCE_BUCKET", ""),
-            source_key=os.getenv("SOURCE_KEY", ""),
-            destination_bucket=os.getenv("DESTINATION_BUCKET", ""),
-            destination_key=os.getenv("DESTINATION_KEY", ""),
+            aws_region=os.getenv("AWS_REGION"),
+            source_bucket=os.getenv("SOURCE_BUCKET"),
+            source_key=os.getenv("SOURCE_KEY"),
+            destination_bucket=os.getenv("DESTINATION_BUCKET"),
+            destination_key=os.getenv("DESTINATION_KEY"),
             aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
             aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
             log_level=os.getenv("LOG_LEVEL", "INFO"),
